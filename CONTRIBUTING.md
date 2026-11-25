@@ -1,0 +1,1 @@
+Run `npm test` with Node 20+. Keep fixtures local and use reserved example domains. Contributions must stay within the public links layer, make no attribution claim, include no customer data or credentials, and avoid copying any private implementation. Report suspected security issues through the verified private route once listed in SECURITY.md, not public issues.

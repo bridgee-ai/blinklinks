@@ -1,0 +1,10 @@
+{
+  "linkHost": "https://links.example.com",
+  "webHost": "https://www.example.com",
+  "iosTeam": "EXAMPLETEA",
+  "iosBundle": "com.example.links",
+  "iosStoreId": "1234567890",
+  "androidPackage": "com.example.links",
+  "androidSigningSHA256": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+  "productIds": ["42"]
+}
