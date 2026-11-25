@@ -23,7 +23,7 @@ test('HTTP homepage entry → product link → fallback and association docs wit
  try{
   const home=await (await fetch(origin)).text(),path=home.match(/href="(\/p\/42)"/)[1];
   const r=await fetch(origin+path,{redirect:'manual'});assert.equal(r.status,200);
-  const body=await r.text();assert.match(body,/https:\/\/apps.apple.com/);assert.match(body,/https:\/\/play.google.com/);assert.match(body,/https:\/\/www.example.com\/products\/42/);assert.match(body,/manual reopening/);
+  const body=await r.text();assert.match(body,/https:\/\/apps.apple.com/);assert.match(body,/https:\/\/play.google.com/);assert.match(body,/https:\/\/www.example.com\/products\/42/);assert.match(body,/reopen the original link from the message/);assert.ok(!body.includes('href="'+link+'"'));
   for(const f of ['apple-app-site-association','assetlinks.json']){
    const a=await fetch(origin+'/.well-known/'+f,{redirect:'manual'});assert.equal(a.status,200);assert.equal(a.headers.get('content-type'),'application/json');assert.ok(await a.json());
   }

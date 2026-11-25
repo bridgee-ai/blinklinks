@@ -13,7 +13,7 @@ export function fixtureServer(){
   const target=destinations(host+req.url);
   if(!target){send(404,'text/plain','Not found');return;}
   // All href values are generated from fixed origins and an allowlisted numeric route.
-  send(200,'text/html; charset=utf-8','<!doctype html><html lang="en"><title>BlinkLinks fallback</title><h1>Choose where to continue</h1><ul>'+[['Web',target.web],['Google Play (fixture)',target.android],['App Store (fixture)',target.ios],['Original link, for manual reopening after install',target.iosManualContinuation]].map(([label,url])=>'<li><a href="'+url.replaceAll('&','&amp;')+'">'+label+'</a></li>').join('')+'</ul></html>');
+  send(200,'text/html; charset=utf-8','<!doctype html><html lang="en"><title>BlinkLinks fallback</title><h1>Choose where to continue</h1><ul>'+[['Web',target.web],['Google Play (fixture)',target.android],['App Store (fixture)',target.ios]].map(([label,url])=>'<li><a href="'+url.replaceAll('&','&amp;')+'">'+label+'</a></li>').join('')+'</ul><p>On iPhone, after installing, reopen the original link from the message or scan the original QR again.</p></html>');
  });
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){

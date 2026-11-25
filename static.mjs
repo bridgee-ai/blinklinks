@@ -44,9 +44,9 @@ export async function generateStatic(config,destination){
   const android='https://play.google.com/store/apps/details?'+new URLSearchParams({
    id:c.androidPackage,referrer:new URLSearchParams({blink_link:canonical}).toString()
   });
-  const anchors=[[web,'Continue on the web'],[android,'Install from Google Play'],[ios,'Open App Store'],[canonical,'Original link: reopen manually after iOS install']];
+  const anchors=[[web,'Continue on the web'],[android,'Install from Google Play'],[ios,'Open App Store']];
   await writeFile(join(root,file),html('Continue to product '+id,
-   '<ul>'+anchors.map(([href,label])=>'<li><a href="'+esc(href)+'" rel="noreferrer">'+label+'</a></li>').join('')+'</ul>'));
+   '<ul>'+anchors.map(([href,label])=>'<li><a href="'+esc(href)+'" rel="noreferrer">'+label+'</a></li>').join('')+'</ul><p>On iPhone, after installing, reopen the original link from the message or scan the original QR again.</p>'));
   routes.push(file);
  }
  await writeFile(join(root,'index.html'),html('BlinkLinks navigation',

@@ -29,7 +29,8 @@ test('generator CLI → customer-owned static HTML → shop/referrer + associati
   const href=home.match(/href="(\/p\/42\.html)"/)[1];
   const fallback=await (await fetch(origin+href)).text();
   assert.doesNotMatch(home+fallback,/<script|<img|bridgeeme|amazonaws|telemetry/i);
-  assert.match(fallback,/Original link: reopen manually/);
+  assert.match(fallback,/reopen the original link from the message or scan the original QR again/);
+  assert.ok(!fallback.includes('href="'+cfg.linkHost+href+'"'));
   const play=new URL(fallback.match(/href="(https:\/\/play.google.com[^"]+)"/)[1].replaceAll('&amp;','&'));
   assert.deepEqual(deferredRoute(play.searchParams.get('referrer'),cfg.linkHost),{screen:'product',id:'42'});
   assert.equal(deferredRoute(play.searchParams.get('referrer'),'https://another.example.com'),null);
